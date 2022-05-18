@@ -84,6 +84,9 @@ RUN apt-get update && apt-get install -y \
 COPY docker/opencv_python-3.2.0.egg-info /usr/lib/python3/dist-packages/
 COPY docker/scikit-learn-0.19.1.egg-info /usr/lib/python3/dist-packages/
 
+RUN apt-get install -y apt-transport-https ca-certificates -y
+RUN update-ca-certificates
+
 # Install gst-python (python bindings for GStreamer)
 RUN \
    export GST_CFLAGS="-pthread -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include" && \
